@@ -1,0 +1,17 @@
+{
+  "name": "all-task-service-v1",
+  "version": "1.0.0",
+  "description": "list all tasks and assignedTo users",
+  "main": "all-task-service-v1.js",
+  "scripts": {
+    "start": "node all-task-service-v1.js"
+  },
+  "author": "Jeremy Ji",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5",
+    "pug": "^2.0.3"
+  }
+}

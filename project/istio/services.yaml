@@ -1,0 +1,45 @@
+#All User Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: alluser
+  labels:
+    app: alluser
+spec:
+  ports:
+  - port: 80
+    targetPort: 3001
+    name: http
+  selector:
+    app: alluser
+---
+#Single User Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: singleuser
+  labels:
+    app: singleuser
+spec:
+  ports:
+  - port: 80
+    targetPort: 3001
+    name: http
+  selector:
+    app: singleuser
+---
+#All Task Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: alltask
+  labels:
+    app: alltask
+spec:
+  ports:
+  - port: 80
+    targetPort: 3001
+    name: http
+  selector:
+    app: alltask
+---

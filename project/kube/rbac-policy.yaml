@@ -1,0 +1,65 @@
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRole
+metadata:
+  name: sr-alltask
+  namespace: default
+spec:
+  rules:
+  - services: ["alltask.default.svc.cluster.local"]
+    methods: ["GET"]
+---
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRoleBinding
+metadata:
+  name: bind-sr-alltask
+  namespace: default
+spec:
+  subjects:
+  - user: "*"
+  roleRef:
+    kind: ServiceRole
+    name: "sr-alltask"
+---
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRole
+metadata:
+  name: sr-singleuser
+  namespace: default
+spec:
+  rules:
+  - services: ["singleuser.default.svc.cluster.local"]
+    methods: ["GET"]
+---
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRoleBinding
+metadata:
+  name: bind-sr-singleuser
+  namespace: default
+spec:
+  subjects:
+  - user: "cluster.local/ns/default/sa/sa-alltask"
+  roleRef:
+    kind: ServiceRole
+    name: "sr-singleuser"
+---
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRole
+metadata:
+  name: sr-alluser
+  namespace: default
+spec:
+  rules:
+  - services: ["alluser.default.svc.cluster.local"]
+    methods: ["GET"]
+---
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRoleBinding
+metadata:
+  name: bind-sr-alluser
+  namespace: default
+spec:
+  subjects:
+  - user: "cluster.local/ns/default/sa/sa-singleuser"
+  roleRef:
+    kind: ServiceRole
+    name: "sr-alluser"

@@ -1,0 +1,75 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: alluser-v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: alluser
+        version: v1
+    spec:
+      containers:
+      - name: alluser
+        image: gcr.io/istio-demo-rbc/all-user-service-v1:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3001
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: singleuser-v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: singleuser
+        version: v1
+    spec:
+      containers:
+      - name: singleuser
+        image: gcr.io/istio-demo-rbc/single-user-service-v1:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3001
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: singleuser-v2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: singleuser
+        version: v2
+    spec:
+      containers:
+      - name: singleuser
+        image: gcr.io/istio-demo-rbc/single-user-service-v2:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3001
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: alltask-v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: alltask
+        version: v1
+    spec:
+      containers:
+      - name: alltask
+        image: gcr.io/istio-demo-rbc/all-task-service-v1:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3001

@@ -1,0 +1,12 @@
+html
+	head
+		title= user.id
+	body
+		h1= user.id
+		article
+			p ID #{user.id}
+			p First Name: #{user.first_name}
+			p First Name: #{user.last_name}
+			if user.avatar
+				p Avatar: #{user.avatar}
+			p Service: #{service}

@@ -1,0 +1,16 @@
+{
+  "name": "single-user-service-v1",
+  "version": "1.0.0",
+  "description": "get single user details(v1) from all user service",
+  "main": "single-user-service-v1.js",
+  "scripts": {
+    "start": "node single-user-service-v1.js"
+  },
+  "author": "Jeremy Ji",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5",
+    "express": "^4.16.3"
+  }
+}

@@ -1,0 +1,22 @@
+html
+	head
+		title= 'Task List'
+		style
+			include style.css
+	body
+		h1= 'Task List'
+	table
+			thead
+				tr
+					th Task Name
+					th Task Details
+					th Created At
+					th User ID
+			tbody
+			for task in taskList
+				tr
+					td= task.taskName
+					td= task.taskDetail
+					td= task.createdAt
+					td
+						a(href='taskpage/user/'+task.assignedTo) #{task.assignedTo}

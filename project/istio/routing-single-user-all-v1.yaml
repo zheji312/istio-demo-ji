@@ -1,0 +1,41 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: alltask
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - istio-task-gateway
+  http:
+  - route:
+    - destination:
+        host: alltask
+        subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: singleuser
+spec:
+  hosts:
+  - singleuser
+  http:
+  - route:
+    - destination:
+        host: singleuser
+        subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: alluser
+spec:
+  hosts:
+  - alluser
+  http:
+  - route:
+    - destination:
+        host: alluser
+        subset: v1
+---
